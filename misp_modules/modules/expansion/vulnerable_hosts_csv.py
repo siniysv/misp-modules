@@ -32,13 +32,14 @@ def handler(q=False):
 
     vulnerability = request.get('vulnerability')
 
-    if not test_vuln_data_file(request):
-        misperrors['error'] = 'Cannot read file with vulnerabilities.'
+    if not reques['config'].get('vuln_data_file'):
+        misperrors['error'] = 'Filename not found in config.'
         return misperrors
 
-    num_ip = get_ip_num_by_vuln(vulnerability)
+    filename = reques['config'].get('vuln_data_file')
+    log.debug('Using file: {}'.format(str(filename)))
+
     ips = get_ip_by_vuln(vulnerability)
-    print_request(request)
 
     results = {'results': [{'types': mispattributes['output'],
                       'values': ips}]}
