@@ -3,7 +3,7 @@ import os
 import sys
 import logging
 
-log = logging.getLogger('local_vulns')
+log = logging.getLogger('vulnerable_hosts_csv')
 log.setLevel(logging.DEBUG)
 ch = logging.StreamHandler(sys.stdout)
 ch.setLevel(logging.DEBUG)
@@ -21,6 +21,7 @@ moduleconfig = ['vuln_data_file']
 
 
 def handler(q=False):
+    log.debug('Module config: {}'.format(str(version)))
     if q is False:
         return False
     request = json.loads(q)
@@ -78,4 +79,4 @@ def get_ip_num_by_vuln(vuln):
 
 def print_request(request):
     log.debug(str(request))
-    print(request)
+    # print(request)
