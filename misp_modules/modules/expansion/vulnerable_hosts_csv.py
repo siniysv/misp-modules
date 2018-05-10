@@ -32,11 +32,11 @@ def handler(q=False):
 
     vulnerability = request.get('vulnerability')
 
-    if not reques['config'].get('vuln_data_file'):
+    if not request['config'].get('vuln_data_file'):
         misperrors['error'] = 'Filename not found in config.'
         return misperrors
 
-    filename = reques['config'].get('vuln_data_file')
+    filename = request['config'].get('vuln_data_file')
     log.debug('Using file: {}'.format(str(filename)))
 
     ips = get_ip_by_vuln(vulnerability)
