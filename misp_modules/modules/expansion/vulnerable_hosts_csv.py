@@ -59,8 +59,8 @@ def handler(q=False):
             for row in csv_data:
                 log.debug('Checking row: {}'.format(str(row)))
                 try:
-                    if vulnerability in row[cve_col_num]:
-                        ips.append(row[ip_col_num])
+                    if vulnerability in row[cve_column]:
+                        ips.append(row[ip_column])
                 except:
                     pass
     except:
