@@ -55,7 +55,7 @@ def handler(q=False):
         with open(filename, 'r') as csv_file:
             csv_data = csv.reader(csv_file, delimiter=",")
             for row in csv_data:
-            log.debug('Checking row: {}'.format(str(row)))
+                log.debug('Checking row: {}'.format(str(row)))
                 if vulnerability in row[cve_col_num]:
                     ips.append(row[ip_col_num])
     except:
