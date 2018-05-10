@@ -21,7 +21,7 @@ moduleconfig = ['vuln_data_file']
 
 
 def handler(q=False):
-    log.debug('Module config: {}'.format(str(version)))
+    log.debug('Module version: {}'.format(str(version())))
     if q is False:
         return False
     request = json.loads(q)
@@ -78,5 +78,5 @@ def get_ip_num_by_vuln(vuln):
     return num
 
 def print_request(request):
-    log.debug(str(request))
+    log.debug('Request: {}'.format(str(request)))
     # print(request)
