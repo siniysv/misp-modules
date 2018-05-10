@@ -2,6 +2,7 @@ import json
 import os
 import sys
 import logging
+import csv
 
 log = logging.getLogger('vulnerable_hosts_csv')
 log.setLevel(logging.DEBUG)
@@ -52,6 +53,7 @@ def handler(q=False):
 
     ips = []
     try:
+        log.debug('Opening file: {}'.format(str(filename)))
         with open(filename, 'r') as csv_file:
             csv_data = csv.reader(csv_file, delimiter=",")
             for row in csv_data:
