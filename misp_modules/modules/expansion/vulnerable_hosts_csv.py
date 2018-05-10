@@ -48,13 +48,14 @@ def handler(q=False):
         misperrors['error'] = 'cve_column not found in config.'
         return misperrors
     cve_column = request['config'].get('cve_column')
-    log.debug('Using file: {}'.format(str(cve_column)))
+    log.debug('Using cve_column: {}'.format(str(cve_column)))
 
     ips = []
     try:
         with open(filename, 'r') as csv_file:
             csv_data = csv.reader(csv_file, delimiter=",")
             for row in csv_data:
+            log.debug('Checking row: {}'.format(str(row)))
                 if vulnerability in row[cve_col_num]:
                     ips.append(row[ip_col_num])
     except:
