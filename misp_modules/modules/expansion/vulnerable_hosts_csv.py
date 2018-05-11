@@ -68,6 +68,8 @@ def handler(q=False):
         misperrors['error'] = 'Something went wrong while reading the file.'
         return misperrors
 
+    ips = list(set(ips))
+
     results = {'results': [{'types': mispattributes['output'],
                       'values': ips}]}
 
