@@ -60,9 +60,9 @@ def handler(q=False):
                 log.debug('Checking row: {}'.format(str(row)))
                 try:
                     if vulnerability in row[int(cve_column)]:
-                        ips.append(row[int(ip_column)])
+                        ips.append(row[int(ip_column)].strip())
                 except Exception as e:
-                    log.error('Exception: {}'.format(str(e)))
+                    log.error('Exception parsing csv row: {}'.format(str(e)))
 
     except:
         misperrors['error'] = 'Something went wrong while reading the file.'
